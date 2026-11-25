@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="مع عبدالعزيز — نتعلم معاً: موقع تعليمي شخصي يشاركك رحلة التعلم في تطوير الويب والتصميم والذكاء الاصطناعي ومهارات الدراسة.">
+  <meta name="theme-color" content="#eaf6fd">
+  <title>مع عبدالعزيز — نتعلم معاً</title>
+
+  <!-- أيقونة صفحة مدمجة (لا ملفات إضافية) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232b8ac2'/%3E%3Cpath d='M14 18c8-3 14-2 18 1 4-3 10-4 18-1v28c-8-3-14-2-18 1-4-3-10-4-18-1V18z' fill='%23fff'/%3E%3Cpath d='M32 19v28' stroke='%232b8ac2' stroke-width='3'/%3E%3C/svg%3E">
+
+  <!-- الخطوط: Cairo للنصوص و Amiri للعناوين (مع بدائل نظامية في حال عدم توفّر الإنترنت) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- التنسيقات الخاصة بالموقع -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       مكتبة أيقونات SVG داخلية (لا تحتاج أي ملفات أو خدمات خارجية)
+       ============================================================ -->
+  <svg class="svg-sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v18H6.5A2.5 2.5 0 0 0 4 22V4.5zM4 17.5A2.5 2.5 0 0 1 6.5 15H20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-video" viewBox="0 0 24 24"><rect x="3" y="5" width="14" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M17 10l4-2v8l-4-2v-4z" fill="currentColor"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l2-2a5 5 0 0 0-7-7l-1.2 1.2M14 11a5 5 0 0 0-7.5-.5l-2 2a5 5 0 0 0 7 7l1.2-1.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M14 8h3V4h-3c-2.2 0-4 1.8-4 4v2H7v4h3v6h4v-6h3l1-4h-4V8c0-.6.4-1 1-1z" fill="currentColor"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M17.5 3h3l-6.6 7.6L21.8 21h-6l-4.7-6.1L5.7 21h-3l7-8L2.5 3h6.2l4.2 5.6L17.5 3zm-1 16h1.7L7.3 4.9H5.5L16.5 19z" fill="currentColor"/></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.1.2-.6.8-.7.9-.1.1-.3.2-.5.1-.2-.1-.9-.3-1.8-1.1-.7-.6-1.1-1.4-1.3-1.6-.1-.2 0-.4.1-.5l.4-.5c.1-.1.2-.3.3-.4 0-.1 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.4-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9 2.1.9 2.6.7 3.1.7.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1-.1-.1-.2-.2-.4-.2z" fill="currentColor"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5m0 0l-6 6m6-6l6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16 16l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 6.5L12 13l8.5-6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-youtube" viewBox="0 0 24 24"><path d="M21.6 7.2a2.6 2.6 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.6 2.6 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.6 2.6 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.6 2.6 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.5 3L10 15z" fill="currentColor"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-2c-2.8.6-3.4-1.2-3.4-1.2-.5-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.4-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-4.8 0-1.1.4-1.9 1-2.6-.1-.3-.4-1.2.1-2.6 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 4.9 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.3.1 2.6.6.7 1 1.5 1 2.6 0 3.7-2.3 4.5-4.6 4.8.4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 12 2z" fill="currentColor"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M6.5 8H3v13h3.5V8zM4.7 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM21 13.7c0-3.2-1.7-4.7-4-4.7a3.5 3.5 0 0 0-3.1 1.7V8H10.4v13H14v-6.6c0-1.8.8-2.8 2.2-2.8 1.3 0 1.9.9 1.9 2.8V21H21v-7.3z" fill="currentColor"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5l11 7-11 7V5z" fill="currentColor"/></symbol>
+  </svg>
+
+  <!-- شريط التقدم في القراءة -->
+  <div class="progress-bar" id="progressBar" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       1) الشريط العلوي الثابت
+       ============================================================ -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="#home" aria-label="مع عبدالعزيز — الصفحة الرئيسية">
+        <span class="brand-mark">ع</span>
+        <span class="brand-text">مع عبدالعزيز <small>نتعلم معاً</small></span>
+      </a>
+
+      <nav class="top-nav" id="topNav" aria-label="التنقل الرئيسي">
+        <a href="#home" class="nav-link active">الرئيسية</a>
+        <a href="#about" class="nav-link">من أنا؟</a>
+        <a href="#library" class="nav-link">الدروس</a>
+        <a href="#media" class="nav-link">معرض الوسائط</a>
+        <a href="#tips" class="nav-link">نصائح ومصادر</a>
+        <a href="#contact" class="nav-link">تواصل معي</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn sidebar-toggle" id="sidebarToggle" type="button" aria-label="فتح قائمة الدروس" aria-expanded="false" aria-controls="lessonsSidebar">
+          <svg class="icon"><use href="#i-book"></use></svg>
+        </button>
+        <button class="icon-btn menu-toggle" id="menuToggle" type="button" aria-label="فتح القائمة" aria-expanded="false" aria-controls="topNav">
+          <svg class="icon" id="menuIcon"><use href="#i-menu"></use></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- طبقة خلفية لإغلاق القوائم على الجوال -->
+  <div class="backdrop" id="backdrop" hidden></div>
+
+  <!-- ============================================================
+       التخطيط العام: المحتوى الرئيسي + الشريط الجانبي للدروس
+       ============================================================ -->
+  <div class="layout container">
+
+    <main id="main">
+
+      <!-- --------------------------------------------------------
+           2) الصفحة الرئيسية
+           -------------------------------------------------------- -->
+      <section class="section hero" id="home" aria-labelledby="hero-title">
+        <div class="hero-card">
+          <div class="hero-text" data-reveal>
+            <span class="eyebrow">مساحة تعلمك الجديدة 🌿</span>
+            <h1 id="hero-title">نتعلم خطوة بخطوة،<br>ونكبر معاً كل يوم</h1>
+            <p class="lead">مرحباً بك في مساحة التعلم الخاصة بي، هنا أشاركك ما أتعلمه لتستفيد معي.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#library">ابدأ من الدروس <span aria-hidden="true">←</span></a>
+              <a class="btn btn-ghost" href="#about">تعرف عليّ</a>
+            </div>
+            <div class="hero-points">
+              <span><svg class="icon"><use href="#i-check"></use></svg> ملخصات واضحة</span>
+              <span><svg class="icon"><use href="#i-check"></use></svg> فيديوهات مفيدة</span>
+              <span><svg class="icon"><use href="#i-check"></use></svg> مصادر موثوقة</span>
+            </div>
+          </div>
+          <div class="hero-media" data-reveal>
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80" alt="شخص يتعلم عبر الحاسوب المحمول في مكان هادئ" loading="eager" fetchpriority="high">
+            <div class="floating-badge">
+              <span class="badge-icon">📚</span>
+              <span>تعلّم · طبّق · شارك</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="goals" aria-label="أهداف الموقع">
+          <article class="goal" data-reveal>
+            <div class="goal-icon">🌱</div>
+            <h3>تبسيط المعرفة</h3>
+            <p>نشرح الأفكار بلغة بسيطة وأمثلة قريبة من واقعنا.</p>
+          </article>
+          <article class="goal" data-reveal>
+            <div class="goal-icon">🛠️</div>
+            <h3>التعلم بالتطبيق</h3>
+            <p>كل درس يرافقه مثال عملي يمكنك تجرّبه بنفسك.</p>
+          </article>
+          <article class="goal" data-reveal>
+            <div class="goal-icon">🔎</div>
+            <h3>مصادر موثوقة</h3>
+            <p>روابط نافعة تساعدك على مواصلة الطريق وحدك.</p>
+          </article>
+          <article class="goal" data-reveal>
+            <div class="goal-icon">🤝</div>
+            <h3>رحلة مستمرة</h3>
+            <p>نتعلم معاً، ونضيف ونحدّث المحتوى خطوة بخطوة.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- --------------------------------------------------------
+           3) من أنا؟
+           -------------------------------------------------------- -->
+      <section class="section" id="about" aria-labelledby="about-title">
+        <div class="section-heading" data-reveal>
+          <span class="eyebrow">قصتي</span>
+          <h2 id="about-title">من أنا؟</h2>
+          <p>تعرّف على الشخص الذي يقف خلف هذه المساحة.</p>
+        </div>
+
+        <div class="about-card">
+          <div class="about-photo" data-reveal>
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=900&q=80" alt="صورة شخصية لعبدالعزيز" loading="lazy">
+          </div>
+          <div class="about-body" data-reveal>
+            <h3>مرحباً، أنا عبدالعزيز 👋</h3>
+            <p class="lead">اسمي عبدالعزيز، طالب أشاركك رحلتي في التعلم. بدأت هذه المساحة من رغبتي في ترتيب ما أتعلمه، ثم وجدت أن مشاركته معك قد تكون أكثر فائدة.</p>
+            <p>أؤمن أن التعلم لا يكتمل إلا عندما تشاركه مع غيرك؛ لذلك أجمع هنا بين الملخصات والفيديوهات والمصادر التي ساعدتني، وأقدّمها بطريقة هادئة وسهلة التصفح.</p>
+
+            <h4>ما أهدف إليه من الموقع</h4>
+            <ul class="check-list">
+              <li>أن أثبّت ما أتعلمه عبر كتابته وشرحه بأسلوبي الخاص.</li>
+              <li>أن أوفّر لك نقطة بداية واضحة في كل مجال، دون تشتت.</li>
+              <li>أن أبني معك عادة تعلم صغيرة ومستمرة تنفعك طويلاً.</li>
+            </ul>
+
+            <div class="stats">
+              <div><strong>5</strong><span>مجالات تعليمية</span></div>
+              <div><strong>20+</strong><span>درساً ومصدراً</span></div>
+              <div><strong>∞</strong><span>رحلة تتجدد</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- --------------------------------------------------------
+           4) مكتبة الدروس والمواد التعليمية
+           -------------------------------------------------------- -->
+      <section class="section" id="library" aria-labelledby="library-title">
+        <div class="section-heading" data-reveal>
+          <span class="eyebrow">مكتبة الدروس</span>
+          <h2 id="library-title">تعلّم حسب المجال</h2>
+          <p>ملخصات منظّمة، فيديوهات مضمّنة، ومصادر إضافية لكل موضوع.</p>
+        </div>
+
+        <!-- البحث والتصفية -->
+        <div class="library-tools" data-reveal>
+          <label class="search-box" for="librarySearch">
+            <svg class="icon"><use href="#i-search"></use></svg>
+            <input type="search" id="librarySearch" placeholder="ابحث في الدروس والمجالات..." autocomplete="off">
+          </label>
+          <div class="filter-chips" role="group" aria-label="تصفية المجالات">
+            <button class="chip is-active" type="button" data-filter="all">الكل</button>
+            <button class="chip" type="button" data-filter="web">تطوير الويب</button>
+            <button class="chip" type="button" data-filter="design">التصميم</button>
+            <button class="chip" type="button" data-filter="ai">الذكاء الاصطناعي</button>
+            <button class="chip" type="button" data-filter="publish">النشر</button>
+            <button class="chip" type="button" data-filter="general">مواد عامة</button>
+          </div>
+        </div>
+
+        <div class="course-grid" id="courseGrid">
+
+          <!-- ---------- المجال 1: تطوير الويب ---------- -->
+          <article class="course-card" id="cat-web" data-category="web" data-reveal>
+            <div class="course-cover">
+              <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80" alt="شاشة حاسوب عليها أكواد برمجية" loading="lazy">
+              <span class="course-tag">💻 تطوير الويب</span>
+            </div>
+            <div class="course-body">
+              <h3>تطوير الويب: HTML و CSS و JavaScript</h3>
+              <p>من بناء أول صفحة حتى جعلها تفاعلية ومتجاوبة.</p>
+
+              <details class="summary-box" open>
+                <summary><span>📄 الملخص الدراسي</span><svg class="icon"><use href="#i-chevron"></use></svg></summary>
+                <div class="summary-content">
+                  <h4>HTML — الهيكل</h4>
+                  <ul>
+                    <li>الوثيقة: <code>&lt;!DOCTYPE html&gt;</code> ثم <code>html / head / body</code>.</li>
+                    <li>العناصر الأساسية: العناوين، الفقرات، الروابط، الصور، القوائم والجداول.</li>
+                    <li>النماذج: <code>form</code> مع <code>input</code> و <code>label</code> و <code>button</code>.</li>
+                    <li>الدلالات: <code>header</code>، <code>main</code>، <code>article</code>، <code>footer</code> لمحتوى أوضح.</li>
+                  </ul>
+                  <h4>CSS — المظهر</h4>
+                  <ul>
+                    <li>المحددات والوراثة والأولوية (Specificity).</li>
+                    <li>نموذج الصندوق: المحتوى، الحشوة، الحدود، الهامش.</li>
+                    <li>التخطيط: <code>Flexbox</code> لصف واحد و <code>Grid</code> للشبكات.</li>
+                    <li>الاستجابة: استعلامات الوسائط <code>@media</code> والوحدات النسبية.</li>
+                  </ul>
+                  <h4>JavaScript — السلوك</h4>
+                  <ul>
+                    <li>المتغيرات والأنواع والدوال والشروط والحلقات.</li>
+                    <li>المصفوفات والكائنات وطرق التعامل معها.</li>
+                    <li>الـ DOM: اختيار العناصر وتعديلها وإنشاء عناصر جديدة.</li>
+                    <li>الأحداث مثل <code>click</code> و <code>input</code> و <code>submit</code>.</li>
+                  </ul>
+                </div>
+              </details>
+
+              <div class="video-block">
+                <h4><svg class="icon"><use href="#i-video"></use></svg> فيديوهات الدرس</h4>
+                <div class="video-grid">
+                  <div class="video-item">
+                    <div class="video-frame"><iframe loading="lazy" src="https://www.youtube.com/embed/kUMe1FH4CHE" title="دورة HTML الكاملة للمبتدئين" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+                    <p>دورة HTML الكاملة للمبتدئين</p>
+                  </div>
+                  <div class="video-item">
+                    <div class="video-frame"><iframe loading="lazy" src="https://www.youtube.com/embed/OXGznpKZ_sA" title="دورة CSS الكاملة للمبتدئين" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+                    <p>دورة CSS الكاملة للمبتدئين</p>
+                  </div>
+                  <div class="video-item">
+                    <div class="video-frame"><iframe loading="lazy" src="https://www.youtube.com/embed/PkZNo7MFNFg" title="تعلّم JavaScript من الصفر" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+                    <p>تعلّم JavaScript من الصفر</p>
+                  </div>
+                  <div class="video-item">
+                    <div class="video-frame"><iframe loading="lazy" src="https://www.youtube.com/embed/kLO4X_3VYdg" title="مقدمة في HTML و CSS" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+                    <p>مقدمة سريعة في HTML و CSS</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="resources">
+                <h4><svg class="icon"><use href="#i-link"></use></svg> مصادر إضافية</h4>
+                <div class="resource-links">
+                  <a href="https://developer.mozilla.org/ar/" target="_blank" rel="noopener noreferrer">MDN Web Docs</a>
+                  <a href="https://www.w3schools.com/" target="_blank" rel="noopener noreferrer">W3Schools</a>
+                  <a href="https://www.freecodecamp.org/learn" target="_blank" rel="noopener noreferrer">freeCodeCamp</a>
+                  <a href="https://javascript.info/" target="_blank" rel="noopener noreferrer">JavaScript.info</a>
+                </div>
+              </div>
+
+              <!-- أزرار مشاركة الدرس -->
+              <div class="share" aria-label="مشاركة درس تطوير الويب">
+                <span>شارك الدرس:</span>
+                <button type="button" class="share-btn facebook" data-share="facebook" data-title="درس تطوير الويب" data-target="cat-web" aria-label="مشاركة على فيسبوك"><svg class="icon"><use href="#i-facebook"></use></svg></button>
+                <button type="button" class="share-btn x" data-share="x" data-title="درس تطوير الويب" data-target="cat-web" aria-label="مشاركة على إكس"><svg class="icon"><use href="#i-x"></use></svg></button>
+                <button type="button" class="share-btn whatsapp" data-share="whatsapp" data-title="درس تطوير الويب" data-target="cat-web" aria-label="مشاركة على واتساب"><svg class="icon"><use href="#i-whatsapp"></use></svg></button>
+                <button type="button" class="share-btn copy" data-share="copy" data-title="درس تطوير الويب" data-target="cat-web" aria-label="نسخ رابط الدرس"><svg class="icon"><use href="#i-copy"></use></svg></button>
+              </div>
+            </div>
+          </article>
+
+          <!-- ---------- المجال 2: تصميم المواقع ---------- -->
+          <article class="course-card" id="cat-design" data-category="design" data-reveal>
+            <div class="course-cover">
+              <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=900&q=80" alt="تصميم واجهة موقع على هاتف وحاسوب" loading="lazy">
+              <span class="course-tag">📐 تصميم المواقع</span>
+            </div>
+            <div class="course-body">
+              <h3>تصميم المواقع وأساسيات التصميم</h3>
+              <p>كيف تفكر قبل أن تكتب أول سطر من الكود.</p>
+
+              <details class="summary-box">
+                <summary><span>📄 الملخص الدراسي</span><svg class="icon"><use href="#i-chevron"></use></svg></summary>
+                <div class="summary-content">
+                  <h4>الفرق بين UI و UX</h4>
+                  <ul>
+                    <li>UI: الشكل والألوان والخطوط والعناصر المرئية.</li>
+                    <li>UX: الإحساس العام وسهولة وصول المستخدم إلى هدفه.</li>
+                  </ul>
+                  <h4>مبادئ أساسية</h4>
+                  <ul>
+                    <li>التسلسل الهرمي البصري: اجعل الأهم أوضح وأكبر.</li>
+                    <li>التباين والألوان: حدّد لوناً أساسياً ولوني مساعد ومحايد.</li>
+                    <li>المساحة البيضاء: اترك هوامش كافية بين العناصر.</li>
+                    <li>الاتساق: نفس الأزرار والأنماط في كل الصفحات.</li>
+                    <li>الشبكة والمحاذاة: استخدم نظام شبكة (8px مثلًا).</li>
+                  </ul>
+                  <h4>خطوات عملية</h4>
+                  <ul>
+                    <li>ارسم ورقة (Wireframe) بسيطة قبل التصميم.</li>
+                    <li>حوّلها إلى نموذج أولي (Mockup) باستخدام Figma.</li>
+                    <li>صمّم نسخة الجوال أولاً ثم التوسّع للشاشات الأكبر.</li>
+                  </ul>
+                </div>
+              </details>
+
+              <div class="video-block">
+                <h4><svg class="icon"><use href="#i-video"></use></svg> فيديوهات الدرس</h4>
+                <div class="video-grid">
+                  <div class="video-item">
+                    <div class="video-frame"><iframe loading="lazy" src="https://www.youtube.com/embed/ODpB9-MCa5s" title="شرح UI و UX للمبتدئين" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+                    <p>شرح UI و UX في 8 دقائق</p>
+                  </div>
+                  <div class="video-item">
+                    <div class="video-frame"><iframe loading="lazy" src="https://www.youtube.com/embed/c9Wg6Cb_YlU" title="الرسم التخطيطي والنماذج في Figma" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+                    <p>من الورقة إلى النموذج في Figma</p>
+                  </div>
+                  <div class="video-item">
+                    <div class="video-frame"><iframe loading="lazy" src="https://www.youtube.com/embed/vD3B6guUI0o" title="سبعة أساسيات لتصميم الواجهات" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+                    <p>سبعة أساسيات لتصميم الواجهات</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="resources">
+                <h4><svg class="icon"><use href="#i-link"></use></svg> مصادر إضافية</h4>
+                <div class="resource-links">
+                  <a href="https://www.figma.com/" target="_blank" rel="noopener noreferrer">Figma</a>
+                  <a href="https://www.nngroup.com/articles/" target="_blank" rel="noopener noreferrer">Nielsen Norman Group</a>
+                  <a href="https://coolors.co/" target="_blank" rel="noopener noreferrer">Coolors</a>
+                  <a href="https://fonts.google.com/arabic" target="_blank" rel="noopener noreferrer">Google Fonts العربية</a>
+                </div>
+              </div>
+
+              <div class="share" aria-label="مشاركة درس التصميم">
+                <span>شارك الدرس:</span>
+                <button type="button" class="share-btn facebook" data-share="facebook" data-title="درس تصميم المواقع" data-target="cat-design" aria-label="مشاركة على فيسبوك"><svg class="icon"><use href="#i-facebook"></use></svg></button>
+                <button type="button" class="share-btn x" data-share="x" data-title="درس تصميم المواقع" data-target="cat-design" aria-label="مشاركة على إكس"><svg class="icon"><use href="#i-x"></use></svg></button>
+                <button type="button" class="share-btn whatsapp" data-share="whatsapp" data-title="درس تصميم المواقع" data-target="cat-design" aria-label="مشاركة على واتساب"><svg class="icon"><use href="#i-whatsapp"></use></svg></button>
+                <button type="button" class="share-btn copy" data-share="copy" data-title="درس تصميم المواقع" data-target="cat-design" aria-label="نسخ رابط الدرس"><svg class="icon"><use href="#i-copy"></use></svg></button>
+              </div>
+            </div>
+          </article>
+
+          <!-- ---------- المجال 3: الذكاء الاصطناعي ---------- -->
+          <article class="course-card" id="cat-ai" data-category="ai" data-reveal>
+            <div class="course-cover">
+              <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=900&q=80" alt="تصوّر فني للذكاء الاصطناعي" loading="lazy">
+              <span class="course-tag">🤖 الذكاء الاصطناعي</span>
+            </div>
+            <div class="course-body">
+              <h3>الذكاء الاصطناعي واستخداماته</h3>
+              <p>افهم ما الذي يجري حولك، واستخدم الأدوات بثقة ومسؤولية.</p>
+
+              <details class="summary-box">
+                <summary><span>📄 الملخص الدراسي</span><svg class="icon"><use href="#i-chevron"></use></svg></summary>
+                <div class="summary-content">
+                  <h4>الصورة الكاملة</h4>
+                  <ul>
+                    <li>الذكاء الاصطناعي: مجال واسع يحاكي قدرات التفكير والتعلّم.</li>
+                    <li>تعلّم الآلة (ML): خوارزميات تتعلم من البيانات بدل البرمجة الصريحة.</li>
+                    <li>الذكاء التوليدي: ينشئ نصوصاً وصوراً وصوتاً بناءً على ما تعلّمه.</li>
+                  </ul>
+                  <h4>استخدامات عملية</h4>
+                  <ul>
+                    <li>تلخيص النصوص وصياغة الأفكار وتوليد الأكواد.</li>
+                    <li>تحليل الصور والبيانات وأتمتة المهام المتكررة.</li>
+                    <li>مساعدتك في التعلم: اطرح أسئلة واطلب أمثلة وتمارين.</li>
+                  </ul>
+                  <h4>استخدام مسؤول</h4>
+                  <ul>
+                    <li>تحقّق من المعلومات ولا تعتمد على الناتج دون مراجعة.</li>
+                    <li>لا تشارك بيانات خاصة أو حساسة مع الأدوات العامة.</li>
+                    <li>انسب المصدر واحترم حقوق المحتوى.</li>
+                  </ul>
+                </div>
+              </details>
+
+              <div class="video-block">
+                <h4><svg class="icon"><use href="#i-video"></use></svg> فيديوهات الدرس</h4>
+                <div class="video-grid">
+                  <div class="video-item">
+                    <div class="video-frame"><iframe loading="lazy" src="https://www.youtube.com/embed/O3F0AVd0nSc" title="الذكاء الاصطناعي للجميع" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+                    <p>الذكاء الاصطناعي للجميع في 30 دقيقة</p>
+                  </div>
+                  <div class="video-item">
+                    <div class="video-frame"><iframe loading="lazy" src="https://www.youtube.com/embed/G2fqAlgmoPo" title="مقدمة في الذكاء الاصطناعي التوليدي" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+                    <p>مقدمة في الذكاء الاصطناعي التوليدي</p>
+                  </div>
+                  <div class="video-item">
+                    <div class="video-frame"><iframe loading="lazy" src="https://www.youtube.com/embed/qYNweeDHiyU" title="الفرق بين AI و ML و DL" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+                    <p>الفرق بين AI و ML و DL</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="resources">
+                <h4><svg class="icon"><use href="#i-link"></use></svg> مصادر إضافية</h4>
+                <div class="resource-links">
+                  <a href="https://ai.google/education/" target="_blank" rel="noopener noreferrer">Google AI</a>
+                  <a href="https://www.ibm.com/think/topics/artificial-intelligence" target="_blank" rel="noopener noreferrer">IBM AI</a>
+                  <a href="https://huggingface.co/learn" target="_blank" rel="noopener noreferrer">Hugging Face Learn</a>
+                  <a href="https://platform.openai.com/docs/overview" target="_blank" rel="noopener noreferrer">OpenAI Docs</a>
+                </div>
+              </div>
+
+              <div class="share" aria-label="مشاركة درس الذكاء الاصطناعي">
+                <span>شارك الدرس:</span>
+                <button type="button" class="share-btn facebook" data-share="facebook" data-title="درس الذكاء الاصطناعي" data-target="cat-ai" aria-label="مشاركة على فيسبوك"><svg class="icon"><use href="#i-facebook"></use></svg></button>
+                <button type="button" class="share-btn x" data-share="x" data-title="درس الذكاء الاصطناعي" data-target="cat-ai" aria-label="مشاركة على إكس"><svg class="icon"><use href="#i-x"></use></svg></button>
+                <button type="button" class="share-btn whatsapp" data-share="whatsapp" data-title="درس الذكاء الاصطناعي" data-target="cat-ai" aria-label="مشاركة على واتساب"><svg class="icon"><use href="#i-whatsapp"></use></svg></button>
+                <button type="button" class="share-btn copy" data-share="copy" data-title="درس الذكاء الاصطناعي" data-target="cat-ai" aria-label="نسخ رابط الدرس"><svg class="icon"><use href="#i-copy"></use></svg></button>
+              </div>
+            </div>
+          </article>
+
+          <!-- ---------- المجال 4: بناء ونشر المواقع ---------- -->
+          <article class="course-card" id="cat-publish" data-category="publish" data-reveal>
+            <div class="course-cover">
+              <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=900&q=80" alt="حاسوب محمول على طاولة العمل" loading="lazy">
+              <span class="course-tag">📱 بناء ونشر</span>
+            </div>
+            <div class="course-body">
+              <h3>بناء ونشر المواقع</h3>
+              <p>من ملفات على جهازك إلى رابط حقيقي يراه الجميع.</p>
+
+              <details class="summary-box">
+                <summary><span>📄 الملخص الدراسي</span><svg class="icon"><use href="#i-chevron"></use></svg></summary>
+                <div class="summary-content">
+                  <h4>قبل النشر</h4>
+                  <ul>
+                    <li>نظّم الملفات: <code>index.html</code> و <code>styles.css</code> و <code>script.js</code>.</li>
+                    <li>تأكد من عمل الروابط والصور على أكثر من شاشة.</li>
+                    <li>أضف <code>viewport</code> ووصفاً واضحاً للصفحة.</li>
+                  </ul>
+                  <h4>خيارات النشر المجانية</h4>
+                  <ul>
+                    <li>GitHub Pages: مناسب للمشاريع الثابتة والملفات البسيطة.</li>
+                    <li>Netlify: سحب وإفلات أو ربط مباشر بمستودع GitHub.</li>
+                    <li>Vercel: نشر سريع مع معاينة لكل تعديل.</li>
+                  </ul>
+                  <h4>بعد النشر</h4>
+                  <ul>
+                    <li>فعّل HTTPS، واطّلع على النطاق المخصصإن أردت.</li>
+                    <li>حدّث المحتوى بانتظام وتابع أداء الصفحة.</li>
+                  </ul>
+                </div>
+              </details>
+
+              <div class="video-block">
+                <h4><svg class="icon"><use href="#i-video"></use></svg> فيديوهات الدرس</h4>
+                <div class="video-grid">
+                  <div class="video-item">
+                    <div class="video-frame"><iframe loading="lazy" src="https://www.youtube.com/embed/a9r5sR-REwY" title="نشر مشروعك على Netlify مجاناً" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+                    <p>نشر مشروعك على Netlify مجاناً</p>
+                  </div>
+                  <div class="video-item">
+                    <div class="video-frame"><iframe loading="lazy" src="https://www.youtube.com/embed/AD-3nVI3-_U" title="نشر موقع ثابت على GitHub Pages" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+                    <p>نشر موقع ثابت على GitHub Pages</p>
+                  </div>
+                  <div class="video-item">
+                    <div class="video-frame"><iframe loading="lazy" src="https://www.youtube.com/embed/0P53S34zm44" title="طرق نشر الموقع على Netlify" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+                    <p>ثلاث طرق لنشر موقعك</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="resources">
+                <h4><svg class="icon"><use href="#i-link"></use></svg> مصادر إضافية</h4>
+                <div class="resource-links">
+                  <a href="https://www.netlify.com/" target="_blank" rel="noopener noreferrer">Netlify</a>
+                  <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>
+                  <a href="https://vercel.com/" target="_blank" rel="noopener noreferrer">Vercel</a>
+                  <a href="https://web.dev/learn/" target="_blank" rel="noopener noreferrer">web.dev</a>
+                </div>
+              </div>
+
+              <div class="share" aria-label="مشاركة درس النشر">
+                <span>شارك الدرس:</span>
+                <button type="button" class="share-btn facebook" data-share="facebook" data-title="درس بناء ونشر المواقع" data-target="cat-publish" aria-label="مشاركة على فيسبوك"><svg class="icon"><use href="#i-facebook"></use></svg></button>
+                <button type="button" class="share-btn x" data-share="x" data-title="درس بناء ونشر المواقع" data-target="cat-publish" aria-label="مشاركة على إكس"><svg class="icon"><use href="#i-x"></use></svg></button>
+                <button type="button" class="share-btn whatsapp" data-share="whatsapp" data-title="درس بناء ونشر المواقع" data-target="cat-publish" aria-label="مشاركة على واتساب"><svg class="icon"><use href="#i-whatsapp"></use></svg></button>
+                <button type="button" class="share-btn copy" data-share="copy" data-title="درس بناء ونشر المواقع" data-target="cat-publish" aria-label="نسخ رابط الدرس"><svg class="icon"><use href="#i-copy"></use></svg></button>
+              </div>
+            </div>
+          </article>
+
+          <!-- ---------- المجال 5: مواد دراسية عامة ---------- -->
+          <article class="course-card" id="cat-general" data-category="general" data-reveal>
+            <div class="course-cover">
+              <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=900&q=80" alt="دفاتر وملخصات دراسية على الطاولة" loading="lazy">
+              <span class="course-tag">📚 مواد عامة</span>
+            </div>
+            <div class="course-body">
+              <h3>مواد دراسية وملخصات عامة</h3>
+              <p>طرق دراسة أذكى تساعدك على حفظ ما تتعلمه وفهمه.</p>
+
+              <details class="summary-box">
+                <summary><span>📄 الملخص الدراسي</span><svg class="icon"><use href="#i-chevron"></use></svg></summary>
+                <div class="summary-content">
+                  <h4>قواعد ذهبية</h4>
+                  <ul>
+                    <li>الاستدعاء النشط: أغلق الملاحظة وحاول تذكّر الفكرة بنفسك.</li>
+                    <li>التكرار المتباعد: راجع بعد يوم، ثم أسبوع، ثم شهر.</li>
+                    <li>تقنية بومودورو: 25 دقيقة تركيز ثم 5 دقائق راحة.</li>
+                    <li>تقنية فينمان: اشرح الفكرة بشخص آخر لتعرف إن فهمتها.</li>
+                  </ul>
+                  <h4>طريقة عمل الملخص</h4>
+                  <ul>
+                    <li>اقرأ أولاً، ثم اكتب بخطك وكلماتك لا بالنص الأصلي.</li>
+                    <li>قسّم إلى نقاط قصيرة وعناوين واضحة.</li>
+                    <li>أضف مثالاً تطبيقياً لكل فكرة مهمة.</li>
+                    <li>اختم بأسئلة تسألها لنفسك قبل الامتحان.</li>
+                  </ul>
+                </div>
+              </details>
+
+              <div class="video-block">
+                <h4><svg class="icon"><use href="#i-video"></use></svg> فيديوهات الدرس</h4>
+                <div class="video-grid">
+                  <div class="video-item">
+                    <div class="video-frame"><iframe loading="lazy" src="https://www.youtube.com/embed/CPxSzxylRCI" title="ست طرق مدعومة بالعلم للدراسة الفعّالة" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+                    <p>ست طرق علمية للدراسة الفعّالة</p>
+                  </div>
+                  <div class="video-item">
+                    <div class="video-frame"><iframe loading="lazy" src="https://www.youtube.com/embed/aA6WXzHTH4M" title="نظام كامبريدج للدراسة بذكاء" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+                    <p>نظام كامبريدج للدراسة بذكاء</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="resources">
+                <h4><svg class="icon"><use href="#i-link"></use></svg> مصادر إضافية</h4>
+                <div class="resource-links">
+                  <a href="https://www.khanacademy.org/" target="_blank" rel="noopener noreferrer">Khan Academy</a>
+                  <a href="https://apps.ankiweb.net/" target="_blank" rel="noopener noreferrer">Anki</a>
+                  <a href="https://www.notion.so/" target="_blank" rel="noopener noreferrer">Notion</a>
+                  <a href="https://ar.wikipedia.org/" target="_blank" rel="noopener noreferrer">ويكيبيديا العربية</a>
+                </div>
+              </div>
+
+              <div class="share" aria-label="مشاركة درس المواد العامة">
+                <span>شارك الدرس:</span>
+                <button type="button" class="share-btn facebook" data-share="facebook" data-title="درس مهارات الدراسة" data-target="cat-general" aria-label="مشاركة على فيسبوك"><svg class="icon"><use href="#i-facebook"></use></svg></button>
+                <button type="button" class="share-btn x" data-share="x" data-title="درس مهارات الدراسة" data-target="cat-general" aria-label="مشاركة على إكس"><svg class="icon"><use href="#i-x"></use></svg></button>
+                <button type="button" class="share-btn whatsapp" data-share="whatsapp" data-title="درس مهارات الدراسة" data-target="cat-general" aria-label="مشاركة على واتساب"><svg class="icon"><use href="#i-whatsapp"></use></svg></button>
+                <button type="button" class="share-btn copy" data-share="copy" data-title="درس مهارات الدراسة" data-target="cat-general" aria-label="نسخ رابط الدرس"><svg class="icon"><use href="#i-copy"></use></svg></button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+        <p class="empty-state" id="emptyState" hidden>لا توجد نتائج مطابقة. جرّب كلمة بحث أخرى.</p>
+      </section>
+
+      <!-- --------------------------------------------------------
+           5) معرض الوسائط التعليمية
+           -------------------------------------------------------- -->
+      <section class="section" id="media" aria-labelledby="media-title">
+        <div class="section-heading" data-reveal>
+          <span class="eyebrow">شاهد وتعلّم</span>
+          <h2 id="media-title">معرض الوسائط التعليمية</h2>
+          <p>فيديوهات مرتّبة حسب الموضوع، مع صورة توضيحية لكل درس.</p>
+        </div>
+
+        <div class="media-tabs" role="group" aria-label="تصفية الفيديوهات">
+          <button class="chip is-active" type="button" data-media-filter="all">كل المواضيع</button>
+          <button class="chip" type="button" data-media-filter="web">الويب</button>
+          <button class="chip" type="button" data-media-filter="design">التصميم</button>
+          <button class="chip" type="button" data-media-filter="ai">الذكاء الاصطناعي</button>
+          <button class="chip" type="button" data-media-filter="publish">النشر</button>
+          <button class="chip" type="button" data-media-filter="study">الدراسة</button>
+        </div>
+
+        <div class="media-grid" id="mediaGrid">
+          <article class="media-card" data-media="web" data-reveal>
+            <div class="media-thumb">
+              <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80" alt="أكواد برمجية على شاشة الحاسوب" loading="lazy">
+              <span class="play-badge"><svg class="icon"><use href="#i-play"></use></svg></span>
+            </div>
+            <div class="media-body">
+              <span class="media-label">تطوير الويب</span>
+              <h3>ابنِ موقعك الأول بـ HTML</h3>
+              <div class="video-frame"><iframe loading="lazy" src="https://www.youtube.com/embed/pQN-pnXPaVg" title="دورة بناء موقع باستخدام HTML" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+              <div class="share compact" aria-label="مشاركة فيديو HTML">
+                <button type="button" class="share-btn facebook" data-share="facebook" data-title="ابنِ موقعك الأول بـ HTML" data-target="media" aria-label="مشاركة على فيسبوك"><svg class="icon"><use href="#i-facebook"></use></svg></button>
+                <button type="button" class="share-btn x" data-share="x" data-title="ابنِ موقعك الأول بـ HTML" data-target="media" aria-label="مشاركة على إكس"><svg class="icon"><use href="#i-x"></use></svg></button>
+                <button type="button" class="share-btn whatsapp" data-share="whatsapp" data-title="ابنِ موقعك الأول بـ HTML" data-target="media" aria-label="مشاركة على واتساب"><svg class="icon"><use href="#i-whatsapp"></use></svg></button>
+                <button type="button" class="share-btn copy" data-share="copy" data-title="ابنِ موقعك الأول بـ HTML" data-target="media" aria-label="نسخ رابط الفيديو"><svg class="icon"><use href="#i-copy"></use></svg></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="media-card" data-media="web" data-reveal>
+            <div class="media-thumb">
+              <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80" alt="حاسوب محمول يعرض أكواد CSS" loading="lazy">
+              <span class="play-badge"><svg class="icon"><use href="#i-play"></use></svg></span>
+            </div>
+            <div class="media-body">
+              <span class="media-label">تطوير الويب</span>
+              <h3>CSS من الصفر إلى الاحتراف</h3>
+              <div class="video-frame"><iframe loading="lazy" src="https://www.youtube.com/embed/ieTHC78giGQ" title="دورة CSS تشمل Flexbox و Grid" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+              <div class="share compact" aria-label="مشاركة فيديو CSS">
+                <button type="button" class="share-btn facebook" data-share="facebook" data-title="CSS من الصفر إلى الاحتراف" data-target="media" aria-label="مشاركة على فيسبوك"><svg class="icon"><use href="#i-facebook"></use></svg></button>
+                <button type="button" class="share-btn x" data-share="x" data-title="CSS من الصفر إلى الاحتراف" data-target="media" aria-label="مشاركة على إكس"><svg class="icon"><use href="#i-x"></use></svg></button>
+                <button type="button" class="share-btn whatsapp" data-share="whatsapp" data-title="CSS من الصفر إلى الاحتراف" data-target="media" aria-label="مشاركة على واتساب"><svg class="icon"><use href="#i-whatsapp"></use></svg></button>
+                <button type="button" class="share-btn copy" data-share="copy" data-title="CSS من الصفر إلى الاحتراف" data-target="media" aria-label="نسخ رابط الفيديو"><svg class="icon"><use href="#i-copy"></use></svg></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="media-card" data-media="web" data-reveal>
+            <div class="media-thumb">
+              <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80" alt="شاشة برمجة JavaScript" loading="lazy">
+              <span class="play-badge"><svg class="icon"><use href="#i-play"></use></svg></span>
+            </div>
+            <div class="media-body">
+              <span class="media-label">تطوير الويب</span>
+              <h3>JavaScript بتطبيقات عملية</h3>
+              <div class="video-frame"><iframe loading="lazy" src="https://www.youtube.com/embed/jS4aFq5-91M" title="دورة JavaScript العملية" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+              <div class="share compact" aria-label="مشاركة فيديو JavaScript">
+                <button type="button" class="share-btn facebook" data-share="facebook" data-title="JavaScript بتطبيقات عملية" data-target="media" aria-label="مشاركة على فيسبوك"><svg class="icon"><use href="#i-facebook"></use></svg></button>
+                <button type="button" class="share-btn x" data-share="x" data-title="JavaScript بتطبيقات عملية" data-target="media" aria-label="مشاركة على إكس"><svg class="icon"><use href="#i-x"></use></svg></button>
+                <button type="button" class="share-btn whatsapp" data-share="whatsapp" data-title="JavaScript بتطبيقات عملية" data-target="media" aria-label="مشاركة على واتساب"><svg class="icon"><use href="#i-whatsapp"></use></svg></button>
+                <button type="button" class="share-btn copy" data-share="copy" data-title="JavaScript بتطبيقات عملية" data-target="media" aria-label="نسخ رابط الفيديو"><svg class="icon"><use href="#i-copy"></use></svg></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="media-card" data-media="design" data-reveal>
+            <div class="media-thumb">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="لوحة بيانات وتصميم واجهات" loading="lazy">
+              <span class="play-badge"><svg class="icon"><use href="#i-play"></use></svg></span>
+            </div>
+            <div class="media-body">
+              <span class="media-label">التصميم</span>
+              <h3>تصميم واجهة موقع في Figma</h3>
+              <div class="video-frame"><iframe loading="lazy" src="https://www.youtube.com/embed/D56hs0Twfco" title="دورة Figma لتصميم مواقع الويب" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+              <div class="share compact" aria-label="مشاركة فيديو Figma">
+                <button type="button" class="share-btn facebook" data-share="facebook" data-title="تصميم واجهة موقع في Figma" data-target="media" aria-label="مشاركة على فيسبوك"><svg class="icon"><use href="#i-facebook"></use></svg></button>
+                <button type="button" class="share-btn x" data-share="x" data-title="تصميم واجهة موقع في Figma" data-target="media" aria-label="مشاركة على إكس"><svg class="icon"><use href="#i-x"></use></svg></button>
+                <button type="button" class="share-btn whatsapp" data-share="whatsapp" data-title="تصميم واجهة موقع في Figma" data-target="media" aria-label="مشاركة على واتساب"><svg class="icon"><use href="#i-whatsapp"></use></svg></button>
+                <button type="button" class="share-btn copy" data-share="copy" data-title="تصميم واجهة موقع في Figma" data-target="media" aria-label="نسخ رابط الفيديو"><svg class="icon"><use href="#i-copy"></use></svg></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="media-card" data-media="ai" data-reveal>
+            <div class="media-thumb">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="دائرة إلكترونية تمثل التقنية والذكاء الاصطناعي" loading="lazy">
+              <span class="play-badge"><svg class="icon"><use href="#i-play"></use></svg></span>
+            </div>
+            <div class="media-body">
+              <span class="media-label">الذكاء الاصطناعي</span>
+              <h3>أساسيات الذكاء الاصطناعي</h3>
+              <div class="video-frame"><iframe loading="lazy" src="https://www.youtube.com/embed/VGFpV3Qj4as" title="أساسيات الذكاء الاصطناعي للمبتدئين" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+              <div class="share compact" aria-label="مشاركة فيديو الذكاء الاصطناعي">
+                <button type="button" class="share-btn facebook" data-share="facebook" data-title="أساسيات الذكاء الاصطناعي" data-target="media" aria-label="مشاركة على فيسبوك"><svg class="icon"><use href="#i-facebook"></use></svg></button>
+                <button type="button" class="share-btn x" data-share="x" data-title="أساسيات الذكاء الاصطناعي" data-target="media" aria-label="مشاركة على إكس"><svg class="icon"><use href="#i-x"></use></svg></button>
+                <button type="button" class="share-btn whatsapp" data-share="whatsapp" data-title="أساسيات الذكاء الاصطناعي" data-target="media" aria-label="مشاركة على واتساب"><svg class="icon"><use href="#i-whatsapp"></use></svg></button>
+                <button type="button" class="share-btn copy" data-share="copy" data-title="أساسيات الذكاء الاصطناعي" data-target="media" aria-label="نسخ رابط الفيديو"><svg class="icon"><use href="#i-copy"></use></svg></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="media-card" data-media="publish" data-reveal>
+            <div class="media-thumb">
+              <img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&q=80" alt="حاسوب محمول مفتوح لنشر موقع" loading="lazy">
+              <span class="play-badge"><svg class="icon"><use href="#i-play"></use></svg></span>
+            </div>
+            <div class="media-body">
+              <span class="media-label">بناء ونشر</span>
+              <h3>انشر موقعك مجاناً على GitHub</h3>
+              <div class="video-frame"><iframe loading="lazy" src="https://www.youtube.com/embed/-tNcdd7Xy2k" title="استضافة موقع مجاني على GitHub" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+              <div class="share compact" aria-label="مشاركة فيديو النشر">
+                <button type="button" class="share-btn facebook" data-share="facebook" data-title="انشر موقعك مجاناً" data-target="media" aria-label="مشاركة على فيسبوك"><svg class="icon"><use href="#i-facebook"></use></svg></button>
+                <button type="button" class="share-btn x" data-share="x" data-title="انشر موقعك مجاناً" data-target="media" aria-label="مشاركة على إكس"><svg class="icon"><use href="#i-x"></use></svg></button>
+                <button type="button" class="share-btn whatsapp" data-share="whatsapp" data-title="انشر موقعك مجاناً" data-target="media" aria-label="مشاركة على واتساب"><svg class="icon"><use href="#i-whatsapp"></use></svg></button>
+                <button type="button" class="share-btn copy" data-share="copy" data-title="انشر موقعك مجاناً" data-target="media" aria-label="نسخ رابط الفيديو"><svg class="icon"><use href="#i-copy"></use></svg></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="media-card" data-media="study" data-reveal>
+            <div class="media-thumb">
+              <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=800&q=80" alt="كتب ودفاتر للدراسة" loading="lazy">
+              <span class="play-badge"><svg class="icon"><use href="#i-play"></use></svg></span>
+            </div>
+            <div class="media-body">
+              <span class="media-label">مهارات الدراسة</span>
+              <h3>ثلاث نصائح للدراسة الفعّالة</h3>
+              <div class="video-frame"><iframe loading="lazy" src="https://www.youtube.com/embed/TjPFZaMe2yw" title="نصائح للدراسة الفعالة" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+              <div class="share compact" aria-label="مشاركة فيديو مهارات الدراسة">
+                <button type="button" class="share-btn facebook" data-share="facebook" data-title="ثلاث نصائح للدراسة الفعّالة" data-target="media" aria-label="مشاركة على فيسبوك"><svg class="icon"><use href="#i-facebook"></use></svg></button>
+                <button type="button" class="share-btn x" data-share="x" data-title="ثلاث نصائح للدراسة الفعّالة" data-target="media" aria-label="مشاركة على إكس"><svg class="icon"><use href="#i-x"></use></svg></button>
+                <button type="button" class="share-btn whatsapp" data-share="whatsapp" data-title="ثلاث نصائح للدراسة الفعّالة" data-target="media" aria-label="مشاركة على واتساب"><svg class="icon"><use href="#i-whatsapp"></use></svg></button>
+                <button type="button" class="share-btn copy" data-share="copy" data-title="ثلاث نصائح للدراسة الفعّالة" data-target="media" aria-label="نسخ رابط الفيديو"><svg class="icon"><use href="#i-copy"></use></svg></button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- --------------------------------------------------------
+           6) نصائح ومصادر
+           -------------------------------------------------------- -->
+      <section class="section" id="tips" aria-labelledby="tips-title">
+        <div class="section-heading" data-reveal>
+          <span class="eyebrow">زادك التعليمي</span>
+          <h2 id="tips-title">نصائح ومصادر</h2>
+          <p>كتب ومواقع وأدوات اخترتها لتساعدك في رحلتك.</p>
+        </div>
+
+        <div class="tips-grid">
+          <!-- الكتب -->
+          <div class="tip-panel" data-reveal>
+            <h3><span>📖</span> أفضل الكتب</h3>
+            <ul class="tip-list">
+              <li><strong>HTML and CSS: Design and Build Websites</strong> — أساسيات الويب بأسلوب بصري.</li>
+              <li><strong>Eloquent JavaScript</strong> — فهم عميق للغة مع تطبيقات.</li>
+              <li><strong>The Design of Everyday Things</strong> — تفكير تصميمي و تجربة مستخدم.</li>
+              <li><strong>Make It Stick</strong> — كيف يتعلم العقل ويحتفظ بالمعلومات.</li>
+              <li><strong>Atomic Habits</strong> — بناء عادة دراسة مستدامة.</li>
+            </ul>
+          </div>
+
+          <!-- المواقع -->
+          <div class="tip-panel" data-reveal>
+            <h3><span>🌐</span> مواقع للتعلم</h3>
+            <ul class="tip-list">
+              <li><a href="https://www.freecodecamp.org/" target="_blank" rel="noopener noreferrer">freeCodeCamp</a> — دورات عملية مجانية.</li>
+              <li><a href="https://developer.mozilla.org/" target="_blank" rel="noopener noreferrer">MDN Web Docs</a> — المرجع الأهم للويب.</li>
+              <li><a href="https://www.khanacademy.org/" target="_blank" rel="noopener noreferrer">Khan Academy</a> — مواد دراسية متنوعة.</li>
+              <li><a href="https://www.scrimba.com/" target="_blank" rel="noopener noreferrer">Scrimba</a> — تعلم تفاعلي بالكود.</li>
+              <li><a href="https://ar.wikipedia.org/" target="_blank" rel="noopener noreferrer">ويكيبيديا العربية</a> — بداية سريعة لأي موضوع.</li>
+            </ul>
+          </div>
+
+          <!-- الأدوات -->
+          <div class="tip-panel" data-reveal>
+            <h3><span>🧰</span> أدوات مساعدة</h3>
+            <ul class="tip-list">
+              <li><a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreferrer">VS Code</a> — محرر الأكواد.</li>
+              <li><a href="https://www.figma.com/" target="_blank" rel="noopener noreferrer">Figma</a> — التصميم والنماذج الأولية.</li>
+              <li><a href="https://apps.ankiweb.net/" target="_blank" rel="noopener noreferrer">Anki</a> — بطاقات مراجعة متباعدة.</li>
+              <li><a href="https://www.notion.so/" target="_blank" rel="noopener noreferrer">Notion</a> — تنظيم الملاحظات.</li>
+              <li><a href="https://coolors.co/" target="_blank" rel="noopener noreferrer">Coolors</a> — توليد لوحات ألوان.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- الجدول الدراسي المقترح -->
+        <div class="schedule" data-reveal>
+          <h3><span>🗓️</span> جدول دراسي مقترح (أسبوع واحد)</h3>
+          <div class="table-scroll">
+            <table>
+              <caption class="sr-only">جدول دراسي مقترح لسبعة أيام</caption>
+              <thead>
+                <tr><th scope="col">اليوم</th><th scope="col">النشاط الأساسي</th><th scope="col">المدة</th><th scope="col">المخرج</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">السبت</th><td>مشاهدة درس HTML وتطبيق مثال بسيط</td><td>45 دقيقة</td><td>صفحة تحتوي عناوين وصورة</td></tr>
+                <tr><th scope="row">الأحد</th><td>ملخص CSS وتجربة الألوان</td><td>40 دقيقة</td><td>ملخص بصوري للخصائص</td></tr>
+                <tr><th scope="row">الإثنين</th><td>تمرين JavaScript على المتغيرات والدوال</td><td>45 دقيقة</td><td>ثلاثة تمارين محلولة</td></tr>
+                <tr><th scope="row">الثلاثاء</th><td>قراءة مبادئ التصميم ورسم ورقة</td><td>35 دقيقة</td><td>Wireframe بسيط</td></tr>
+                <tr><th scope="row">الأربعاء</th><td>مقدمة في الذكاء الاصطناعي وتجربة أداة</td><td>40 دقيقة</td><td>ملاحظات عن الاستخدام</td></tr>
+                <tr><th scope="row">الخميس</th><td>تطبيق عملي: تجميع ما تعلمته في صفحة</td><td>60 دقيقة</td><td>صفحة متكاملة</td></tr>
+                <tr><th scope="row">الجمعة</th><td>مراجعة متباعدة وتقييم الأسبوع</td><td>30 دقيقة</td><td>قائمة بما تحسّن</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-note">💡 قواعد صغيرة: 25 دقيقة تركيز + 5 دقائق راحة، وراجع ملخصك بعد يوم ثم بعد أسبوع.</p>
+        </div>
+      </section>
+
+      <!-- --------------------------------------------------------
+           7) تواصل معي
+           -------------------------------------------------------- -->
+      <section class="section" id="contact" aria-labelledby="contact-title">
+        <div class="section-heading" data-reveal>
+          <span class="eyebrow">نتعلم معاً</span>
+          <h2 id="contact-title">تواصل معي</h2>
+          <p>لديك سؤال أو اقتراح أو درس تود أن نضيفه؟ أكتب لي.</p>
+        </div>
+
+        <div class="contact-grid">
+          <form class="contact-form" id="contactForm" novalidate data-reveal>
+            <div class="field">
+              <label for="name">الاسم</label>
+              <input type="text" id="name" name="name" placeholder="اكتب اسمك" required minlength="2">
+              <small class="error" id="nameError"></small>
+            </div>
+            <div class="field">
+              <label for="email">البريد الإلكتروني</label>
+              <input type="email" id="email" name="email" placeholder="name@example.com" required>
+              <small class="error" id="emailError"></small>
+            </div>
+            <div class="field">
+              <label for="subject">الموضوع</label>
+              <input type="text" id="subject" name="subject" placeholder="عن ماذا تريد أن نتحدث؟" required minlength="3">
+              <small class="error" id="subjectError"></small>
+            </div>
+            <div class="field">
+              <label for="message">الرسالة</label>
+              <textarea id="message" name="message" rows="6" placeholder="اكتب رسالتك هنا..." required minlength="10"></textarea>
+              <small class="error" id="messageError"></small>
+            </div>
+            <button class="btn btn-primary btn-block" type="submit">
+              <svg class="icon"><use href="#i-mail"></use></svg> إرسال الرسالة
+            </button>
+            <p class="form-note">عند الإرسال سيفتح برنامج البريد لديك برسالة جاهزة لإكمالها.</p>
+          </form>
+
+          <aside class="contact-info" data-reveal>
+            <div class="contact-illustration">
+              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="فريق يتعاون ويناقش الأفكار" loading="lazy">
+            </div>
+            <h3>أسعد بمشاركتك 🤍</h3>
+            <p>كل سؤال يساعدني على تحسين المحتوى، وكل اقتراح قد يصبح درساً جديداً هنا.</p>
+            <div class="social-links">
+              <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="يوتيوب"><svg class="icon"><use href="#i-youtube"></use></svg><span>يوتيوب</span></a>
+              <a href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="جيت هاب"><svg class="icon"><use href="#i-github"></use></svg><span>GitHub</span></a>
+              <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="لينكد إن"><svg class="icon"><use href="#i-linkedin"></use></svg><span>LinkedIn</span></a>
+              <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="إنستغرام"><svg class="icon"><use href="#i-instagram"></use></svg><span>إنستغرام</span></a>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ============================================================
+         الشريط الجانبي: تصفح الدروس بسرعة
+         ============================================================ -->
+    <aside class="lessons-sidebar" id="lessonsSidebar" aria-label="تصفح الدروس">
+      <div class="sidebar-head">
+        <h2>تصفّح الدروس</h2>
+        <button class="icon-btn sidebar-close" id="sidebarClose" type="button" aria-label="إغلاق قائمة الدروس">
+          <svg class="icon"><use href="#i-close"></use></svg>
+        </button>
+      </div>
+      <p class="sidebar-hint">قفز مباشرة إلى الجزء الذي يهمك.</p>
+
+      <nav class="sidebar-nav">
+        <span class="sidebar-group">المجالات</span>
+        <a href="#cat-web"><span>💻</span> تطوير الويب</a>
+        <a href="#cat-design"><span>📐</span> تصميم المواقع</a>
+        <a href="#cat-ai"><span>🤖</span> الذكاء الاصطناعي</a>
+        <a href="#cat-publish"><span>📱</span> بناء ونشر المواقع</a>
+        <a href="#cat-general"><span>📚</span> مواد دراسية عامة</a>
+
+        <span class="sidebar-group">أقسام أخرى</span>
+        <a href="#home"><span>🏠</span> الصفحة الرئيسية</a>
+        <a href="#about"><span>👤</span> من أنا؟</a>
+        <a href="#media"><span>🎬</span> معرض الوسائط</a>
+        <a href="#tips"><span>💡</span> نصائح ومصادر</a>
+        <a href="#contact"><span>✉️</span> تواصل معي</a>
+      </nav>
+
+      <div class="sidebar-card">
+        <strong>ابدأ بخطوة صغيرة</strong>
+        <p>اختر درساً واحداً اليوم، وطبّقه بعد مشاهدته مباشرة.</p>
+        <a href="#library">اذهب إلى الدروس ←</a>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- زر العودة للأعلى -->
+  <button class="to-top" id="toTop" type="button" aria-label="العودة إلى أعلى الصفحة">
+    <svg class="icon"><use href="#i-up"></use></svg>
+  </button>
+
+  <!-- إشعار صغير للتفاعلات -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- ============================================================
+       التذييل
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="brand-mark">ع</span>
+        <div>
+          <strong>مع عبدالعزيز — نتعلم معاً</strong>
+          <p>مساحة هادئة للتعلم والمشاركة.</p>
+        </div>
+      </div>
+      <nav class="footer-links" aria-label="روابط التذييل">
+        <a href="#home">الرئيسية</a>
+        <a href="#library">الدروس</a>
+        <a href="#media">الوسائط</a>
+        <a href="#contact">تواصل</a>
+      </nav>
+      <p class="copyright">مع عبدالعزيز — نتعلم معاً © 2026</p>
+    </div>
+  </footer>
+
+  <!-- سكربت التفاعلات -->
+  <script src="script.js"></script>
+</body>
+</html>
